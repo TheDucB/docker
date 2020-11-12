@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  git:
+    image: git_cloner:1.0
+    container_name: git_clone_repo
+    build: .
+    command: clone https://github.com/TheDucB/docker.git
