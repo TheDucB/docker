@@ -6,3 +6,4 @@ services:
     container_name: git_clone_repo
     build: .
     command: clone https://github.com/TheDucB/docker.git
+    volumes: ['/src/main/java/']

@@ -1,26 +1,43 @@
-repositories {
-    mavenCentral()
-}
-
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 
+sourceCompatibility = 1.7
+
 checkstyle {
-    toolVersion "7.6.1"
-    config = rootProject.resources.text.fromFile('config/checkstyle/checkstyle.xml')
-}
-checkstyleMain {
-    source ='src/main/java'
-}
 
-dependencies {
-    checkstyle( 'com.puppycrawl.tools:checkstyle:8.35' )
-}
+  project.ext.checkstyleVersion = '8.37'
+  project.ext.sevntuChecksVersion = '1.38.0'
 
-tasks.withType(Checkstyle) {
-    reports {
-        xml.enabled false
-        html.enabled true
-        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
+  repositories {
+    mavenCentral()
+    // we keep artifacts in maven central too,
+    // but this is just example of usage from our old maven repo on github
+    maven {
+      url "http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2"
     }
+  }
+
+  ignoreFailures = true
+  configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+
+  //sourceSets = [sourceSets.main]
+  //showViolations = true
+  //reportsDir = file("$project.buildDir/checkstyleReports")
+  //configProperties = ['baseDir': "$project.projectDir"]
+
+  //https://discuss.gradle.org/t/some-checkstyle-rules-dont-work-in-gradle/16102/4
+  checkstyleMain {
+    source = sourceSets.main.allSource
+  }
+
+  configurations {
+    checkstyle
+  }
+
+  dependencies{
+    assert project.hasProperty("checkstyleVersion")
+
+    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+    checkstyle "com.github.sevntu-checkstyle:sevntu-checks:${sevntuChecksVersion}"
+  }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.37">
+<file name="D:\ReallifeSTUFF\HochschulStuff\DevOps\Docker\docker\src\main\java\Greeter.java">
+<error line="3" column="3" severity="warning" message="Das Unterelement von &apos;method def&apos; hat eine unerwartete Einrückungstiefe von 2 (erwartet: 4)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="D:\ReallifeSTUFF\HochschulStuff\DevOps\Docker\docker\src\main\java\HelloWorld.java">
+<error line="2" column="3" severity="warning" message="Es fehlt ein Javadoc-Kommentar." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+</checkstyle>

@@ -1,4 +1,0 @@
-Greeter.java
- Greeter
-HelloWorld.java
- HelloWorld
