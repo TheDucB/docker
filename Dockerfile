@@ -7,4 +7,3 @@ FROM openjdk:7-jre-slim
 
 FROM alpine/git:1.0.4
 CMD ["git", "version"]
-WORKDIR /home

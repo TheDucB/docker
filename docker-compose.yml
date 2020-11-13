@@ -2,8 +2,20 @@ version: '3.3'
 
 services:
   git:
-    image: git_cloner:1.0
-    container_name: git_clone_repo
+    image: git_not_approved:1.0
+    container_name: guide_not_approved
     build: .
     command: clone https://github.com/TheDucB/docker.git
-    volumes: ['/docker/src/main/java/']
+    volumes: ['/src/main/java/']
+  secondgit:
+    image: git_approved:1.0
+    container_name: guide_approved
+    build: .
+    command: clone https://github.com/TheDucB/codeguideapproved.git
+    volumes: ['/src/main/java/']
+  thirdgit:
+    image: git_wrong:1.0
+    container_name: git_url_wrong
+    build: .
+    command: clone https://github.com/TheDucB/wrongurlhere.git
+    volumes: ['/src/main/java/']
