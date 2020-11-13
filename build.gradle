@@ -17,6 +17,10 @@ checkstyle {
     }
   }
 
+  checkstyleMain{
+      logging.setLevel(LogLevel.LIFECYCLE)
+  }
+
   ignoreFailures = true
   configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
 
